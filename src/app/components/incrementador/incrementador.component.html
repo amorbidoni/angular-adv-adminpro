@@ -7,7 +7,7 @@
   <input
     type="number"
     class="form-control"
-    [ngClass]="{ 'is-invalid': isInvalid }"
+    [ngClass]="{ 'is-invalid': progress > 100 || progress < 0 }"
     placeholder="Product name"
     [(ngModel)]="progress"
     max="100"

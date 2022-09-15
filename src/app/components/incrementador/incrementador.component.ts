@@ -32,13 +32,13 @@ export class IncrementadorComponent implements OnInit {
   emitNewValue() {}
   isInvalid: boolean = false;
   onChange(value: number) {
-    if (value >= 100) {
-      this.progress = 100;
-    } else if (value <= 0) {
-      this.progress = 0;
-    } else {
-      this.progress = value;
-    }
+    // if (value >= 100) {
+    //   this.progress = 100;
+    // } else if (value <= 0) {
+    //   this.progress = 0;
+    // } else {
+    // }
+    this.progress = value;
 
     this.newValue.emit(this.progress);
   }
