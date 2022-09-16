@@ -22,6 +22,14 @@ export class SidebarService {
           title: 'Graphics',
           routerLink: '/dashboard/grafica1',
         },
+        {
+          title: 'Promises',
+          routerLink: '/dashboard/promises',
+        },
+        {
+          title: 'RXJS',
+          routerLink: '/dashboard/rxjs',
+        },
       ],
     },
   ];

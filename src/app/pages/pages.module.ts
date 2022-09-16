@@ -13,6 +13,8 @@ import { ProgressComponent } from './progress/progress.component';
 import { PagesComponent } from './pages.component';
 import { ComponentsModule } from '../components/components.module';
 import { AcountSettingsComponent } from './acount-settings/acount-settings.component';
+import { PromsiesComponent } from './promsies/promsies.component';
+import { RxjsComponent } from './rxjs/rxjs.component';
 
 @NgModule({
   declarations: [
@@ -21,6 +23,8 @@ import { AcountSettingsComponent } from './acount-settings/acount-settings.compo
     ProgressComponent,
     PagesComponent,
     AcountSettingsComponent,
+    PromsiesComponent,
+    RxjsComponent,
   ],
   imports: [
     CommonModule,
