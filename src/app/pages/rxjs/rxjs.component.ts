@@ -5,7 +5,7 @@ import { filter, map, retry, take } from 'rxjs/operators';
 @Component({
   selector: 'app-rxjs',
   templateUrl: './rxjs.component.html',
-  styles: [],
+  styleUrls: [`./table.scss`],
 })
 export class RxjsComponent implements OnInit, OnDestroy {
   constructor() {
@@ -50,4 +50,9 @@ export class RxjsComponent implements OnInit, OnDestroy {
     return obs$;
   }
   ngOnInit(): void {}
+
+  params = {
+    talles: [70, 80, 90],
+    colors: ['Rojo', 'Rosa', 'Negro', 'Azul', 'Violeta'],
+  };
 }

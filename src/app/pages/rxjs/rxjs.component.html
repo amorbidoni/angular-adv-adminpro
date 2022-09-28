@@ -1,1 +1,18 @@
-<p>rxjs works!</p>
+<div class="variations">
+  <table class="variations__table">
+    <thead>
+      <tr>
+        <th></th>
+        <th *ngFor="let talle of params.talles">{{ talle }}</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let color of params.colors">
+        <td><span>●</span> {{ color }}</td>
+        <td *ngFor="let item of params.talles">
+          <input class="variations__table--input" type="number" />
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

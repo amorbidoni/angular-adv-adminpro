@@ -1,0 +1,37 @@
+.variations {
+  &__table {
+    border-collapse: separate;
+    border-spacing: 10px;
+    td:not(:first-child) {
+      border: 1px solid #ccc;
+      border-radius: 3px;
+      width: 45px;
+      height: 40px;
+      padding: 5px;
+    }
+    td:first-child {
+      padding-right: 5px;
+    }
+    th {
+      text-align: center;
+      height: 20px;
+    }
+    /* Chrome, Safari, Edge, Opera */
+    &--input::-webkit-outer-spin-button,
+    &--input::-webkit-inner-spin-button {
+      -webkit-appearance: none;
+      margin: 0;
+    }
+
+    /* Firefox */
+    &--input[type="number"] {
+      -moz-appearance: textfield;
+    }
+    &--input {
+      border: none;
+      background-color: transparent;
+      width: 100%;
+      height: 100%;
+    }
+  }
+}
