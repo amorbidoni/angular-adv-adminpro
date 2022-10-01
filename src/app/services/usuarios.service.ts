@@ -5,7 +5,7 @@ import { tap, map, catchError } from 'rxjs/operators';
 import { Observable, of } from 'rxjs';
 //
 import { RegisterForm, LoginForm } from '../interfaces/register-form.interface';
-import { environment } from '../../environments/environment.prod';
+import { environment } from '../../environments/environment';
 import { Usuario } from '../models/user.model';
 //
 const base_url = environment.base_url;

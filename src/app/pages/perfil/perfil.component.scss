@@ -1,0 +1,14 @@
+.avatar {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 5px;
+  width: 180px;
+  height: 180px;
+  overflow: hidden;
+  margin: 0 auto 20px;
+  box-shadow: 0 7px 14px rgba(0, 0, 0, 0.2);
+  &__img {
+    width: 100%;
+  }
+}

@@ -33,6 +33,7 @@
                 id="exampleInputEmail1"
                 placeholder="Email"
                 formControlName="email"
+                [readonly]="usuario.google"
               />
             </div>
           </div>
@@ -55,12 +56,28 @@
       <div class="card-body">
         <h4 class="card-title">Avatar</h4>
         <h6 class="card-subtitle">Imagen de usuario</h6>
-        <img src="" alt="usuario imagen" />
-        <input type="file" />
+        <ng-container *ngIf="!imgTemp; else temporalImage">
+          <div class="avatar">
+            <img
+              [src]="usuario.imageUrl"
+              class="avatar__img"
+              alt="usuario imagen"
+            />
+          </div>
+        </ng-container>
+        <ng-template #temporalImage>
+          <div class="avatar">
+            <img [src]="imgTemp" class="avatar__img" alt="usuario imagen" />
+          </div>
+        </ng-template>
+
+        <input type="file" (change)="changeImage($event.target!)" />
         <br />
         <br />
         <button
           class="btn btn-success waves-effect waves-light m-r-10 btn-block"
+          [disabled]="!imageToUpload"
+          (click)="updateImage()"
         >
           Cambiar imagen
           <i class="fa fa-save"></i>
