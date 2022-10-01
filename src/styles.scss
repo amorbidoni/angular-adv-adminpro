@@ -9,3 +9,8 @@
 .cursor-pointer {
   cursor: pointer;
 }
+.text-overflow {
+  width: 154px;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}

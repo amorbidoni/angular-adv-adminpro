@@ -203,7 +203,7 @@
                   <a href="#">
                     <div class="user-img">
                       <img
-                        src="./assets/images/users/1.jpg"
+                        [src]="user.imageUrl"
                         alt="user"
                         class="img-circle"
                       />
@@ -219,7 +219,7 @@
                   <a href="#">
                     <div class="user-img">
                       <img
-                        src="./assets/images/users/2.jpg"
+                        [src]="user.imageUrl"
                         alt="user"
                         class="img-circle"
                       />
@@ -237,7 +237,7 @@
                   <a href="#">
                     <div class="user-img">
                       <img
-                        src="./assets/images/users/3.jpg"
+                        [src]="user.imageUrl"
                         alt="user"
                         class="img-circle"
                       />
@@ -253,7 +253,7 @@
                   <a href="#">
                     <div class="user-img">
                       <img
-                        src="./assets/images/users/4.jpg"
+                        [src]="user.imageUrl"
                         alt="user"
                         class="img-circle"
                       />
@@ -317,24 +317,24 @@
             data-toggle="dropdown"
             aria-haspopup="true"
             aria-expanded="false"
-            ><img
-              src="./assets/images/users/1.jpg"
-              alt="user"
-              class="profile-pic"
+            ><img [src]="user.imageUrl" alt="user" class="profile-pic"
           /></a>
           <div class="dropdown-menu dropdown-menu-right animated fadeIn fast">
             <ul class="dropdown-user">
               <li>
                 <div class="dw-user-box">
                   <div class="u-img">
-                    <img src="./assets/images/users/1.jpg" alt="user" />
+                    <img [src]="user.imageUrl" alt="user" />
                   </div>
                   <div class="u-text">
-                    <h4>Steave Jobs</h4>
-                    <p class="text-muted">varun@gmail.com</p>
+                    <h4>{{ user.nombre }}</h4>
+                    <p class="text-muted">
+                      {{ user.email | slice: 0:20
+                      }}{{ user.email.length > 20 ? "..." : "" }}
+                    </p>
                     <a
-                      href="pages-profile.html"
                       class="btn btn-rounded btn-danger btn-sm"
+                      routerLink="./perfil"
                       >View Profile</a
                     >
                   </div>
