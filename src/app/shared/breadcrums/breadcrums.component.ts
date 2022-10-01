@@ -16,7 +16,7 @@ export class BreadcrumsComponent implements OnDestroy {
       this.title = title;
     });
     // otra forma de acceder a la data de la ruta es con ActivatedRoute y subscribirme a los cambios en los hijos
-    console.log(activatedRoute.snapshot.children[0].data.title);
+    // console.log(activatedRoute.snapshot.children[0].data.title);
   }
   ngOnDestroy() {
     this.titleSubs.unsubscribe();

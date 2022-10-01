@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { UsuariosService } from '../../services/usuarios.service';
+import Swal from 'sweetalert2';
+import { Router } from '@angular/router';
 import {
   AbstractControl,
   FormBuilder,
@@ -13,15 +16,19 @@ import {
   styleUrls: ['../login/login.component.css'],
 })
 export class RegistroComponent implements OnInit {
-  constructor(private fb: FormBuilder) {}
+  constructor(
+    private fb: FormBuilder,
+    private userService: UsuariosService,
+    private route: Router
+  ) {}
   public formSumitted: boolean = false;
-  public registerForm = this.fb.group(
+  public registerForm: FormGroup = this.fb.group(
     {
       nombre: ['Pedro', [Validators.required, Validators.minLength(3)]],
       email: ['test100@gmail.com', [Validators.required, Validators.email]],
       password: ['', [Validators.required]],
       password2: ['', [Validators.required]],
-      terms: [false, [Validators.required]],
+      terms: [false, [Validators.requiredTrue]],
     },
     {
       validators: this.confirmedPassword('password', 'password2'),
@@ -30,12 +37,23 @@ export class RegistroComponent implements OnInit {
 
   addUSer() {
     this.formSumitted = true;
-    console.log(this.registerForm.value);
-    if (this.registerForm.valid) {
-      console.log('Posteando formulario');
+
+    if (this.registerForm.invalid) {
+      return;
     } else {
-      console.log('Formulario incorrecto');
-      console.log(this.registerForm);
+      this.userService.crearUsuario(this.registerForm.value).subscribe(
+        (res) => {
+          this.route.navigateByUrl('/login');
+        },
+        (err) => {
+          Swal.fire({
+            title: 'Error!',
+            text: err.error.msj,
+            icon: 'error',
+            confirmButtonText: 'OK',
+          });
+        }
+      );
     }
   }
   campoNoValido(campo: string): boolean {

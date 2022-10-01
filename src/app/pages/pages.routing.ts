@@ -7,11 +7,13 @@ import { Grafica1Component } from './grafica1/grafica1.component';
 import { AcountSettingsComponent } from './acount-settings/acount-settings.component';
 import { PromsiesComponent } from './promsies/promsies.component';
 import { RxjsComponent } from './rxjs/rxjs.component';
+import { AuthGuard } from '../guards/auth.guard';
 
 const routes: Routes = [
   {
     path: 'dashboard',
     component: PagesComponent,
+    canActivate: [AuthGuard],
     children: [
       {
         path: '',

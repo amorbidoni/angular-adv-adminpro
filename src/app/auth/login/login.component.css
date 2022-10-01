@@ -55,3 +55,12 @@ Login register and recover password Page
   position: absolute;
   height: 100%;
 }
+.buttonDiv {
+  width: 225px;
+  margin-bottom: 20px;
+}
+.flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
