@@ -7,6 +7,7 @@ import { Observable, of } from 'rxjs';
 import { RegisterForm, LoginForm } from '../interfaces/register-form.interface';
 import { environment } from '../../environments/environment';
 import { Usuario } from '../models/user.model';
+import { UsersResult } from '../interfaces/getUsersResult.interface';
 //
 const base_url = environment.base_url;
 
@@ -18,11 +19,15 @@ export class UsuariosService {
   constructor(private http: HttpClient, private router: Router) {}
 
   public user!: Usuario;
+
   get token(): string {
     return localStorage.getItem('token') || '';
   }
   get uid(): string {
     return this.user.uid || '';
+  }
+  get headers() {
+    return { headers: { 'x-token': this.token } };
   }
   login(formData: LoginForm) {
     const _url: string = `${base_url}/login`;
@@ -54,7 +59,7 @@ export class UsuariosService {
 
   validatToken(): Observable<boolean> {
     const _url: string = `${base_url}/login/renew`;
-    return this.http.get(_url, { headers: { 'x-token': this.token } }).pipe(
+    return this.http.get(_url, this.headers).pipe(
       map((res: any) => {
         const { nombre, email, role, google, uid, img = '' } = res.usuario;
         this.user = new Usuario(nombre, email, '', img, google, uid, role);
@@ -83,6 +88,28 @@ export class UsuariosService {
     data = { ...data, role: this.user.role! };
     const _url: string = `${base_url}/usuarios/${this.uid}`;
     console.log(this.user);
-    return this.http.put(_url, data, { headers: { 'x-token': this.token } });
+    return this.http.put(_url, data, this.headers);
+  }
+  //
+  getUsers(from: number = 0): Observable<UsersResult> {
+    const _url = `${base_url}/usuarios?desde=${from}`;
+
+    return this.http.get<UsersResult>(_url, this.headers).pipe(
+      map((res) => {
+        const usuarios = res.usuarios.map(
+          (user) =>
+            new Usuario(
+              user.nombre,
+              user.email,
+              '',
+              user.img,
+              user.google,
+              user.uid,
+              user.role
+            )
+        );
+        return { ok: true, total: res.total, usuarios };
+      })
+    );
   }
 }

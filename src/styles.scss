@@ -14,3 +14,25 @@
   text-overflow: ellipsis;
   overflow: hidden;
 }
+.w100 {
+  width: 100px;
+}
+.h80 {
+  height: 90px;
+}
+.center-container {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  overflow: hidden;
+  border-radius: 100%;
+  width: 75px;
+  height: 75px;
+  box-shadow: 0 5px 5px rgba(0, 0, 0, 0.2);
+}
+.br-4 {
+  border-radius: 4px;
+}
+.avatar {
+  width: 76px;
+}

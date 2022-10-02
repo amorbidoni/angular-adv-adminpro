@@ -16,19 +16,37 @@ export class SidebarService {
         },
         {
           title: 'Progressbar',
-          routerLink: '/dashboard/progress',
+          routerLink: './progress',
         },
         {
           title: 'Graphics',
-          routerLink: '/dashboard/grafica1',
+          routerLink: './grafica1',
         },
         {
           title: 'Promises',
-          routerLink: '/dashboard/promises',
+          routerLink: './promises',
         },
         {
           title: 'RXJS',
-          routerLink: '/dashboard/rxjs',
+          routerLink: './rxjs',
+        },
+      ],
+    },
+    {
+      title: 'Mantenimientos',
+      icon: 'mdi mdi-folder-lock-open',
+      subMenu: [
+        {
+          title: 'Usuarios',
+          routerLink: './usuarios',
+        },
+        {
+          title: 'Hospitales',
+          routerLink: './hospitales',
+        },
+        {
+          title: 'Medicos',
+          routerLink: './medicos',
         },
       ],
     },

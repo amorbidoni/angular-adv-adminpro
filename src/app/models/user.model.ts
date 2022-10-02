@@ -12,10 +12,11 @@ export class Usuario {
   ) {}
 
   get imageUrl() {
-    if (this.img?.includes('https')) {
+    if (!this.img) {
+      return `${baseUrl}/uploads/usuarios/no-image`;
+    } else if (this.img.includes('https')) {
       return this.img;
-    }
-    if (this.img) {
+    } else if (this.img) {
       return `${baseUrl}/uploads/usuarios/${this.img}`;
     } else {
       return `${baseUrl}/uploads/usuarios/no-image`;
