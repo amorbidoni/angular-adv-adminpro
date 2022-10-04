@@ -17,6 +17,12 @@
 .w100 {
   width: 100px;
 }
+.w50 {
+  width: 50px;
+}
+.w140 {
+  width: 140px;
+}
 .h80 {
   height: 90px;
 }
@@ -35,4 +41,19 @@
 }
 .avatar {
   width: 76px;
+}
+.avatar__img{
+  width: 75px;
+}
+.fondo-modal-imagen{
+  background-color: rgba(0, 0, 0, 0.4);
+  height: 100%;
+  left: 0;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 999;
+}
+.oculto{
+  display: none;
 }

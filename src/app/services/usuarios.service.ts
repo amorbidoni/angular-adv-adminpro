@@ -85,9 +85,8 @@ export class UsuariosService {
   // actualizar usuario\
 
   updateProfile(data: { nombre: string; email: string; role: string }) {
-    data = { ...data, role: this.user.role! };
+    data ={...data, role:this.user.role!}
     const _url: string = `${base_url}/usuarios/${this.uid}`;
-    console.log(this.user);
     return this.http.put(_url, data, this.headers);
   }
   //
@@ -111,5 +110,14 @@ export class UsuariosService {
         return { ok: true, total: res.total, usuarios };
       })
     );
+  }
+  deleteUser(user:Usuario){
+ const _url= `${base_url}/usuarios/${user.uid}`
+    return this.http.delete(_url, this.headers)
+  }
+
+  updateUser(user:Usuario) {
+    const _url: string = `${base_url}/usuarios/${user.uid}`;
+    return this.http.put(_url, user, this.headers);
   }
 }

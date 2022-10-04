@@ -35,14 +35,14 @@
                 <th class="w100">Foto</th>
                 <th>Email</th>
                 <th>Nombre</th>
-                <th class="w100">Rol</th>
+                <th class="w140">Rol</th>
                 <th class="w100">Auth</th>
                 <th class="w100">Acciones</th>
               </tr>
             </thead>
             <tbody>
               <tr *ngFor="let user of users">
-                <td>
+                <td (click)="abrirModal(user)" class="cursor-pointer">
                   <div class="center-container">
                     <img
                       class="avatar"
@@ -55,7 +55,12 @@
                   {{ user.email }}
                 </td>
                 <td>{{ user.nombre }}</td>
-                <td>{{ user.role }}</td>
+                <td>
+                    <select class="form-control" name="" id="" [(ngModel)]="user.role" (change)="cambiarRole(user)">
+                        <option value="ADMIN_ROLE">Admin</option>
+                        <option value="USER_ROLE">User</option>
+                    </select>
+                </td>
                 <td>
                   <ng-container *ngIf="user.google; else normal">
                     <span class="label label-danger">Google</span>
@@ -66,14 +71,8 @@
                 </td>
                 <td class="text-nowrap">
                   <a
-                    href="#"
-                    data-toggle="tooltip"
-                    data-original-title="Editar"
-                  >
-                    <i class="fa fa-pencil text-inverse m-r-10"></i>
-                  </a>
-                  <a
-                    href="#"
+                  class="cursor-pointer"
+                  (click)="deleteUser(user)"
                     data-toggle="tooltip"
                     data-original-title="Borrar"
                   >
