@@ -93,23 +93,24 @@ export class UsuariosService {
   getUsers(from: number = 0): Observable<UsersResult> {
     const _url = `${base_url}/usuarios?desde=${from}`;
 
-    return this.http.get<UsersResult>(_url, this.headers).pipe(
-      map((res) => {
-        const usuarios = res.usuarios.map(
-          (user) =>
-            new Usuario(
-              user.nombre,
-              user.email,
-              '',
-              user.img,
-              user.google,
-              user.uid,
-              user.role
-            )
-        );
-        return { ok: true, total: res.total, usuarios };
-      })
-    );
+    return this.http.get<UsersResult>(_url, this.headers)
+                    .pipe(
+                      map((res) => {
+                        const usuarios = res.usuarios.map(
+                          (user) =>
+                            new Usuario(
+                              user.nombre,
+                              user.email,
+                              '',
+                              user.img,
+                              user.google,
+                              user.uid,
+                              user.role
+                            )
+                        );
+                        return { ok: true, total: res.total, usuarios };
+                        })
+                      );
   }
   deleteUser(user:Usuario){
  const _url= `${base_url}/usuarios/${user.uid}`

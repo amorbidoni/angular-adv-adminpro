@@ -58,9 +58,10 @@ export class UsuariosComponent implements OnInit, OnDestroy {
       this.users = this.usersTemp;
       return;
     }
-    this.busquedasService.search('usuarios', termino).subscribe((res) => {
-      this.users = res!;
-    });
+    this.busquedasService.search('usuarios', termino)
+                         .subscribe((res) => {
+                             this.users = res as Usuario[];
+                       });
   }
 
   deleteUser(usuario:Usuario){
@@ -74,15 +75,17 @@ export class UsuariosComponent implements OnInit, OnDestroy {
       cancelButtonColor: '#d33',
       confirmButtonText: 'Confirmar'
     }).then((result) => {
+      if(result.value){
       this.userService.deleteUser(usuario).subscribe(res=>{
         this.getUsers()  
         Swal.fire(
-            'Usuario borrado.',
-            `El usuario ${usuario.nombre} se eliminó correctamente.`,
-            'success'
+          'Usuario borrado.',
+          `El usuario ${usuario.nombre} se eliminó correctamente.`,
+          'success'
           )
-        
-      })
+          
+        })
+      }
     })
     return
   }
