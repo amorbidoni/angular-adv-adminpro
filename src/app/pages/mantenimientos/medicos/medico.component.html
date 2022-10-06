@@ -8,12 +8,12 @@
                       [formGroup]="medicoForm"  
                       (ngSubmit)="guardarMedico()">
                     <!--  -->
-                    <div class="form-group" >
+                    <div class="form-group" *ngIf="medicoSeleccionado">
                         <label for="exampleInputuname">Imagen</label>
                         <div class="col-sm-9">
                            <div class="input-group">
-                                <img src="" alt="imagen"
-                                     class="w200"   >
+                                <img [src]="medicoSeleccionado.img! | imagen: 'medicos'" alt="imagen"
+                                     class="w200 br-4 box-shadow"   >
                            </div>
                         </div>
                     </div>

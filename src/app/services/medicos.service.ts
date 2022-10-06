@@ -23,8 +23,10 @@ export class MedicosService {
   get headers() {
     return { headers: { 'x-token': this.token } };
   }
-  getMedicos():Observable<MedicosResult>{
-    const _url = `${baseUrl}/medicos`;
+  getMedicos(from?:string):Observable<MedicosResult>{
+    let _url = `${baseUrl}/medicos`;
+    if(from) _url += `?desde=${from}`;
+
     return this.http.get<MedicosResult>(_url, this.headers)
                     .pipe(
                         map( (res )=> {
@@ -41,14 +43,14 @@ export class MedicosService {
                           }) 
                         )                 
   }
-  addMedico(nombre:string, hospitalId:string = ''){
+  addMedico(medico: {nombre:string, hospitalId:string}):Observable<{ok:boolean, medico:Medico}>{
     const _url =`${baseUrl}/medicos`
 
-    return this.http.post(_url,  {nombre, hospital:hospitalId}, this.headers)
+    return this.http.post<{ok:boolean, medico:Medico}>(_url,  medico, this.headers);
   }
 
-  updateMedico(medico:Medico, _id:string){
-    const _url =`${baseUrl}/medicos/${_id}`
+  updateMedico(medico:Medico){
+    const _url =`${baseUrl}/medicos/${medico._id}`
 
     return this.http.put(_url, medico, this.headers)
   }
@@ -57,5 +59,14 @@ export class MedicosService {
     const _url =`${baseUrl}/medicos/${_id}`
 
     return this.http.delete(_url, this.headers)
+  }
+  
+  getMedicoById(_id:string):Observable<Medico>{
+    const _url = `${baseUrl}/medicos/${_id}`;
+
+    return this.http.get<{ok:boolean, medico:Medico}>(_url, this.headers)
+                    .pipe(
+                      map(res => res.medico)
+                    );
   }
 }

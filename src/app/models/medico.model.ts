@@ -3,7 +3,7 @@ interface _MedicoUser{
     nombre: string,
     img: string
 }
-interface _HospitalUser{
+interface _MedicoHospital{
     _id: string,
     nombre: string,
     img: string
@@ -14,6 +14,6 @@ export class Medico{
             public _id?: string,
             public img?: string,
             public usuario?: _MedicoUser,
-            public hospital?: _HospitalUser,
+            public hospital?: _MedicoHospital,
         ){}
 }

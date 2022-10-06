@@ -25,7 +25,6 @@ export class HospitalesService {
   }
 
   getHospitales(from?:number):Observable<HospitalResult>{
-    console.log(from)
     let _url = `${base_url}/hospitales`;    
     if(from)   _url += `?desde=${from}`;
      

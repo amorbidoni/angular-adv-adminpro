@@ -24,11 +24,14 @@ export class ModalImagenService {
                 this.id   = id;
                 this.tipo = tipo;
                 this.img  = img;
-                if(img.includes('https')){
-                  this.img  = img;
+                if(!this.img){
+                  this.img = `${base_url}/uploads/${tipo}/no-image`
+                } else if(this.img && img.includes('https')){
+                   this.img  = img;
                 }else{
-                  this.img = `${base_url}/uploads/${tipo}/${img}`
+                   this.img = `${base_url}/uploads/${tipo}/${img}`
                 }
+             
               }  
   cerrarModal(){
     this._ocultarModal = true
