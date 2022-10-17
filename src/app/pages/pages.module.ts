@@ -22,6 +22,7 @@ import { MedicosComponent } from './mantenimientos/medicos/medicos.component';
 import { ImagenPipe } from '../pipes/imagen.pipe';
 import { PipesModule } from '../pipes/pipes.module';
 import { MedicoComponent } from './mantenimientos/medicos/medico.component';
+import { BusquedaComponent } from './busqueda/busqueda.component';
 
 @NgModule({
   declarations: [
@@ -37,6 +38,7 @@ import { MedicoComponent } from './mantenimientos/medicos/medico.component';
     HospitalesComponent,
     MedicosComponent,
     MedicoComponent,
+    BusquedaComponent,
   ],
   imports: [
     CommonModule,
