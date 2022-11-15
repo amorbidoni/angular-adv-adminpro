@@ -3,7 +3,7 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { ProgressComponent } from './progress/progress.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
-import { Grafica1Component } from './grafica1/grafica1.component';
+
 import { AcountSettingsComponent } from './acount-settings/acount-settings.component';
 import { PromsiesComponent } from './promsies/promsies.component';
 import { RxjsComponent } from './rxjs/rxjs.component';
@@ -14,7 +14,7 @@ import { MedicosComponent } from './mantenimientos/medicos/medicos.component';
 import { MedicoComponent } from './mantenimientos/medicos/medico.component';
 import { BusquedaComponent } from './busqueda/busqueda.component';
 import { AdminGuard } from '../guards/admin.guard';
-import { MpComponent } from './mp/mp.component';
+
 
 
 
@@ -28,11 +28,6 @@ const childRoutes:Routes =[
     path: 'progress',
     component: ProgressComponent,
     data: { title: 'Progress' },
-  },
-  {
-    path: 'grafica1',
-    component: Grafica1Component,
-    data: { title: 'Gráfica' },
   },
   {
     path: 'acount-settings',
@@ -54,11 +49,7 @@ const childRoutes:Routes =[
     component: PerfilComponent,
     data: { title: 'Perfil' },
   },
-  {
-    path: 'mp',
-    component: MpComponent,
-    data: { title: 'MP' },
-  },
+
   // Mantenimientos
   {
     path: 'usuarios',
