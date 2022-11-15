@@ -11,7 +11,7 @@ interface Users {
 @Component({
   selector: 'app-promsies',
   templateUrl: './promsies.component.html',
-  styles: [],
+  styleUrls: ['./promises.scss'],
 })
 export class PromsiesComponent implements OnInit {
   constructor() {}
