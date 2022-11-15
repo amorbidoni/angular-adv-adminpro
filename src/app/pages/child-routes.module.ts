@@ -14,6 +14,7 @@ import { MedicosComponent } from './mantenimientos/medicos/medicos.component';
 import { MedicoComponent } from './mantenimientos/medicos/medico.component';
 import { BusquedaComponent } from './busqueda/busqueda.component';
 import { AdminGuard } from '../guards/admin.guard';
+import { MpComponent } from './mp/mp.component';
 
 
 
@@ -53,6 +54,11 @@ const childRoutes:Routes =[
     component: PerfilComponent,
     data: { title: 'Perfil' },
   },
+  {
+    path: 'mp',
+    component: MpComponent,
+    data: { title: 'MP' },
+  },
   // Mantenimientos
   {
     path: 'usuarios',
@@ -80,6 +86,7 @@ const childRoutes:Routes =[
     component: BusquedaComponent,
     data: { title: 'Resultado de la búsqueda' },
   },
+
 ]
 
 

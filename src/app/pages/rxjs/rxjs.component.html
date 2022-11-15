@@ -13,6 +13,13 @@
           <input class="variations__table--input" type="number" />
         </td>
       </tr>
+
     </tbody>
   </table>
+  <div>
+    <h2>pipes</h2>
+    <p>{{'2021-05-05' | date: 'shortDate' }}</p>
+    <p>{{ 20 | currency }}</p>
+    <p>{{ 80 | custom: 33.33 }}</p>
+  </div>
 </div>

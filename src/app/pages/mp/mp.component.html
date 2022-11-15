@@ -1,0 +1,36 @@
+<div class="row">
+    <div class="col-md-6">
+      <div class="card">
+        <form id="form-checkout">
+            <div id="form-checkout__cardNumber" class="container"></div>
+            <div id="form-checkout__expirationDate" class="container"></div>
+            <div id="form-checkout__securityCode" class="container"></div>
+            <input type="text" id="form-checkout__cardholderName" />
+            <select id="form-checkout__issuer"></select>
+            <select id="form-checkout__installments"></select>
+            <select id="form-checkout__identificationType"></select>
+            <input type="text" id="form-checkout__identificationNumber" />
+            <input type="email" id="form-checkout__cardholderEmail" />
+        
+            <button type="submit" id="form-checkout__submit">Pagar</button>
+            <progress value="0" class="progress-bar">Carregando...</progress>
+          </form>
+      </div>
+    </div>
+</div>
+<div class="cho-container"></div>
+<script>
+  const mp = new MercadoPago('PUBLIC_KEY', {
+    locale: 'es-AR'
+  });
+
+  mp.checkout({
+    preference: {
+      id: 'YOUR_PREFERENCE_ID'
+    },
+    render: {
+      container: '.cho-container',
+      label: 'Pagar',
+    }
+  });
+</script>

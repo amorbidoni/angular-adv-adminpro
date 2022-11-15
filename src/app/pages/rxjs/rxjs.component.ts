@@ -1,6 +1,8 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
-import { interval, Observable, Subscription } from 'rxjs';
+import { Component, OnDestroy, OnInit, Pipe } from '@angular/core';
+
+import { from, interval, Observable, Subscription, of } from 'rxjs';
 import { filter, map, retry, take } from 'rxjs/operators';
+import { UsersService, User } from '../../services/users.service';
 
 @Component({
   selector: 'app-rxjs',
@@ -8,7 +10,9 @@ import { filter, map, retry, take } from 'rxjs/operators';
   styleUrls: [`./table.scss`],
 })
 export class RxjsComponent implements OnInit, OnDestroy {
-  constructor() {
+  public  users      : User[] = [];
+  private interval !: number;
+  constructor(private usersService : UsersService) {
     // this.retornaObservable()
     //   .pipe(retry(1))
     //   .subscribe(
@@ -16,11 +20,12 @@ export class RxjsComponent implements OnInit, OnDestroy {
     //     (err) => console.warn(err),
     //     () => console.info('Obs terminado')
     //   );
-
-    this.instervalSubs = this.retornaIntervalo().subscribe(console.log);
-  }
+   
+    // this.instervalSubs = this.retornaIntervalo().subscribe(console.log);
+  } 
   ngOnDestroy() {
     this.instervalSubs.unsubscribe();
+   
   }
   public instervalSubs!: Subscription;
 
@@ -49,10 +54,23 @@ export class RxjsComponent implements OnInit, OnDestroy {
     });
     return obs$;
   }
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.usersService.getUsers().subscribe(res=>{
+      console.log('user service: ', res)
+    })
+    this.usersService.getInterval().pipe( 
+      map( n => n + 1 ),
+      take(10), 
+      filter( n => n % 2 === 0 ), 
+    ) .subscribe(res=>{
+      this.interval = res;
+      console.log(res);
+    })
+  }
 
   params = {
     talles: [70, 80, 90],
     colors: ['Rojo', 'Rosa', 'Negro', 'Azul', 'Violeta'],
   };
+ 
 }

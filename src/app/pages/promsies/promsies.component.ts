@@ -1,5 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 
+
+interface Users {
+  id: number;
+  email: string;
+  first_name: string;
+  last_name: string;
+  avatar: string;
+}
 @Component({
   selector: 'app-promsies',
   templateUrl: './promsies.component.html',
@@ -7,6 +15,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PromsiesComponent implements OnInit {
   constructor() {}
+  usuarios: Users[] = [];
 
   ngOnInit(): void {
     // const promise = new Promise((resolve, reject) => {
@@ -24,10 +33,13 @@ export class PromsiesComponent implements OnInit {
     //     console.log(`error en la promsesa ${msj}`);
     //   });
     // console.log('fin del init');
-    this.getUsuarios().then((usuarios) => console.log(usuarios));
+    this.getUsuarios().then((usuarios) => {
+      this.usuarios = usuarios;
+      console.log(usuarios)
+    });
   }
 
-  getUsuarios() {
+  getUsuarios(): Promise<Users[]>{
     return new Promise((resolve) => {
       fetch('https://reqres.in/api/users?page=2')
         .then((res) => res.json())

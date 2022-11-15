@@ -23,6 +23,7 @@ import { ImagenPipe } from '../pipes/imagen.pipe';
 import { PipesModule } from '../pipes/pipes.module';
 import { MedicoComponent } from './mantenimientos/medicos/medico.component';
 import { BusquedaComponent } from './busqueda/busqueda.component';
+import { MpComponent } from './mp/mp.component';
 
 @NgModule({
   declarations: [
@@ -39,6 +40,7 @@ import { BusquedaComponent } from './busqueda/busqueda.component';
     MedicosComponent,
     MedicoComponent,
     BusquedaComponent,
+    MpComponent
   ],
   imports: [
     CommonModule,

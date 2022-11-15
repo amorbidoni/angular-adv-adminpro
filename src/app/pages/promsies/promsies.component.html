@@ -1,1 +1,11 @@
-<p>promsies works!</p>
+<div>
+    <div class="card" *ngFor="let user of usuarios">
+        <div class="card__image">
+            <img [src]="user.avatar" [alt]="user.first_name + ' iamge'">
+        </div>
+        <div class="card__data">
+            <h4 class="card__data--name">{{user.first_name}} {{user.last_name}}</h4>
+            <p class="card__data--email">{{user.email}}</p>
+        </div>
+    </div>
+</div>
